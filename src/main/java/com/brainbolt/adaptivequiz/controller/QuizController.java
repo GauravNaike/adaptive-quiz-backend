@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/v1/quiz")
 @RequiredArgsConstructor
+@CrossOrigin(origins = "http://localhost:5173")
 public class QuizController {
 
     private final QuizService quizService;
