@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+
+  db:
+    image: postgres:15
+    container_name: quiz-db
+    environment:
+      POSTGRES_DB: quiz
+      POSTGRES_USER: quiz
+      POSTGRES_PASSWORD: quiz
+    ports:
+      - "5432:5432"
+
+  redis:
+    image: redis:7
+    container_name: quiz-redis
+    ports:
+      - "6379:6379"
+
+  app:
+    build: .
+    container_name: quiz-app
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+      - redis
